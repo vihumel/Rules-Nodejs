@@ -1,0 +1,67 @@
+define Model {
+
+    constructor: function(options){
+        this.clave = options.clave;
+        this.descripcion = options.descripcion;
+        this.activo = options.activo;
+
+        this.errors = [];
+    },
+
+    toString : function(){
+        return ["Model : [", [this.clave, this.descripcion, this.activo].join(":"), "]"].join("");
+    }
+}
+
+    rule CheckClaveRequired {
+	    when {
+	        m : Model isUndefinedOrNull(m.clave) or m.clave.length eq 0;
+	    }
+	    then {
+	        m.errors.push("clave is required");
+	    }
+	}   
+    rule CheckClaveNoNumbers {
+	    when {
+	        m : Model (isString(m.clave) and m.clave like /[0-9]/);
+	    }
+	    then {
+	        m.errors.push("Clave is must not contain numbers");
+	    }
+	}
+
+    rule CheckDescripcionRequired {
+   		when {
+	        m : Model isUndefinedOrNull(m.descripcion) or m.descripcion.length eq 0;
+	    }
+	    then {
+	        m.errors.push("Descripcion is required");
+	    }
+	}    
+
+	rule CheckClaveLength {
+	    when {
+	        m : Model (isString(m.clave) and m.clave.length neq 3);
+	    }
+	    then {
+	        m.errors.push("Clave cannot be equals longer than 3 characters");
+	    }
+	}
+
+    rule CheckDescripcionLength {
+	    when {
+	        m : Model (isString(m.descripcion) and m.descripcion.length gte 140);
+	    }
+	    then {
+	        m.errors.push("Descripcion cannot be longer than 10 characters");
+	    }
+	}
+
+	rule CheckDobRequired {
+	    when {
+	        m : Model isDate(m.activo) == false;
+	    }
+	    then {
+	        m.errors.push("Activo is required");
+	    }
+	}
