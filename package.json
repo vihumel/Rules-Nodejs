@@ -1,0 +1,9 @@
+{
+	"name": "Departamento",
+	"version": "1.0.0",
+	"description": "Reglas de validación de parametros",
+	"main": "server.js",
+	"dependencies": {
+		"express": "~4.10.2"
+	}
+}
