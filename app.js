@@ -15,7 +15,7 @@ var flow = nools.compile(__dirname + "/rules/validate.nools"),
 	  	Model = flow.getDefined("model");
 
 //Endpoint
-app.get("/test", function(getData, resData){
+app.get("/departamento", function(getData, resData){
 
 	//Se reciben los datos y cargagan en el modelo para enviarse a las reglas
 	var dts = getData.query; 
@@ -44,4 +44,4 @@ app.get("/test", function(getData, resData){
 
 //Se inicializa el endpoint
 app.listen(port);
-console.log("Server http://192.168.1.138:"+port+'/test');
+console.log("Server http://192.168.1.138:"+port+'/departamento');
