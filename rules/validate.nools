@@ -4,7 +4,6 @@ define Model {
         this.clave = options.clave;
         this.descripcion = options.descripcion;
         this.activo = options.activo;
-
         this.errors = [];
     },
 
@@ -62,6 +61,6 @@ define Model {
 	        m : Model m.activo != "true" ;
 	    }
 	    then {
-	        m.errors.push("Activo es requerid");
+	        m.errors.push("Activo es requerido");
 	    }
 	}

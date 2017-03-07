@@ -1,3 +1,6 @@
 # Rules-Nodejs
 
-Probando reglas de nools
+Reglas de validación de parametros:
+
+	- Departamento
+	
