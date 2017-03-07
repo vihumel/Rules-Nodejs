@@ -18,7 +18,7 @@ define Model {
 	        m : Model isUndefinedOrNull(m.clave) or m.clave.length eq 0;
 	    }
 	    then {
-	        m.errors.push("clave is required");
+	        m.errors.push("clave es requerida");
 	    }
 	}   
     rule CheckClaveNoNumbers {
@@ -26,7 +26,7 @@ define Model {
 	        m : Model (isString(m.clave) and m.clave like /[0-9]/);
 	    }
 	    then {
-	        m.errors.push("Clave is must not contain numbers");
+	        m.errors.push("Clave no debe contener numeros");
 	    }
 	}
 
@@ -35,7 +35,7 @@ define Model {
 	        m : Model isUndefinedOrNull(m.descripcion) or m.descripcion.length eq 0;
 	    }
 	    then {
-	        m.errors.push("Descripcion is required");
+	        m.errors.push("Descripcion es requerida");
 	    }
 	}    
 
@@ -44,7 +44,7 @@ define Model {
 	        m : Model (isString(m.clave) and m.clave.length neq 3);
 	    }
 	    then {
-	        m.errors.push("Clave cannot be equals longer than 3 characters");
+	        m.errors.push("Clave debe formarse por 3 caracteres");
 	    }
 	}
 
@@ -53,15 +53,15 @@ define Model {
 	        m : Model (isString(m.descripcion) and m.descripcion.length gte 140);
 	    }
 	    then {
-	        m.errors.push("Descripcion cannot be longer than 10 characters");
+	        m.errors.push("Descripcion no puede ser mayor a 140 caracteres");
 	    }
 	}
 
 	rule CheckDobRequired {
 	    when {
-	        m : Model isDate(m.activo) == false;
+	        m : Model m.activo != "true" ;
 	    }
 	    then {
-	        m.errors.push("Activo is required");
+	        m.errors.push("Activo es requerid");
 	    }
 	}
