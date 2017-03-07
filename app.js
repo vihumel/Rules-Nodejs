@@ -25,6 +25,8 @@ app.get("/departamento", function(getData, resData){
 	var session = flow.getSession.apply(flow, models);
 		session.match().then(function () {
 
+		resData.writeHead(200,{"content-type":"application/json"})
+		
 	    models.forEach(function (m) {
 	        if (m.errors.length) {
 	            console.log("%s \nerror : [ \n\t%s \n]", m, m.errors.join(",\n\t").red);

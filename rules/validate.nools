@@ -29,15 +29,6 @@ define Model {
 	    }
 	}
 
-    rule CheckDescripcionRequired {
-   		when {
-	        m : Model isUndefinedOrNull(m.descripcion) or m.descripcion.length eq 0;
-	    }
-	    then {
-	        m.errors.push("Descripcion es requerida");
-	    }
-	}    
-
 	rule CheckClaveLength {
 	    when {
 	        m : Model (isString(m.clave) and m.clave.length neq 3);
@@ -46,6 +37,15 @@ define Model {
 	        m.errors.push("Clave debe formarse por 3 caracteres");
 	    }
 	}
+
+    rule CheckDescripcionRequired {
+   		when {
+	        m : Model isUndefinedOrNull(m.descripcion) or m.descripcion.length eq 0;
+	    }
+	    then {
+	        m.errors.push("Descripcion es requerida");
+	    }
+	}    
 
     rule CheckDescripcionLength {
 	    when {
